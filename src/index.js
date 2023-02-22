@@ -4,10 +4,12 @@ import App from './App';
 import { Provider } from 'react-redux';
 import {configureStore} from '@reduxjs/toolkit';
 import weatherReducer from './redux/weather'
+import favouriteReducer from './redux/favorite'
 
 const store=configureStore({
   reducer:{
     weather:weatherReducer,
+    favorite:favouriteReducer,
   }
 })
 
