@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import axios from "axios";
-import {BsFillStarFill,BsThermometerSun} from "react-icons/bs"
+import {BsFillStarFill,BsThermometerSun,BsFillBookmarkCheckFill} from "react-icons/bs"
 import {BiSearch} from "react-icons/bi"
-import {AiOutlineArrowRight,AiOutlineArrowLeft} from "react-icons/ai"
+import {AiOutlineArrowRight,AiOutlineArrowLeft,AiOutlineSearch} from "react-icons/ai"
 import {TiWeatherCloudy,TiWeatherPartlySunny} from "react-icons/ti"
 import {GiWindpump} from "react-icons/gi";
+import { useDispatch, useSelector } from "react-redux";
+import { addToFav, removeFromFav } from "../../redux/favorite";
 
 const Home = () => {
     const [location, setLocation] = useState('delhi');
     const [showSearch, setshowSearch] = useState(true);
     const [showDetails, setShowDetails] = useState(false);
-    const [weatherIcon, setWeatherIcon] = useState();
+    const [fav, setFav] = useState(false);
+    const dispatch=useDispatch();
+    const favorites=useSelector(state=>state.favorite);
+    
 
   const [data, setData] = useState({});
 
@@ -28,6 +33,20 @@ const Home = () => {
     }
   };
 
+  const addtoFav=()=>{
+      setFav(!fav)
+      if(fav){
+        removeFav();
+        alert('removed from favorites');
+        setshowSearch(true)
+      }else{
+        dispatch(addToFav(data))
+        setshowSearch(true)
+
+      }
+      console.log(favorites.fav)
+  }
+
   
 
   const handlePage=()=>{
@@ -36,13 +55,16 @@ const Home = () => {
   const handleDetails=()=>{
     setShowDetails(!showDetails);   
   }
+  const removeFav=()=>{
+    dispatch(removeFromFav(data))
+}
 
   return (
     <div className="home-container">
     {!showSearch&&
     <BiSearch className="searchButton" onClick={()=>handlePage()}/>
     }
-    <h2>Weather App</h2>
+    <h3>Weather App</h3>
     
 
       <div className={showSearch?"search-container active":"search-container"}>
@@ -57,8 +79,13 @@ const Home = () => {
           
           <div className="favorite"> 
           <h3>Favorites <span><BsFillStarFill /></span></h3>
-          
-            <div className="feels">
+
+            {favorites.fav?.map((item)=>(
+              <div className="fav" onClick={()=>{setData(item);setshowSearch(false)}} >{item.name} <AiOutlineSearch /></div>
+            )
+              
+            )}
+            {/* <div className="feels">
                 <p className="bold">city 1</p>
                 <p>Feels Like</p>
             </div>
@@ -71,7 +98,7 @@ const Home = () => {
             <div className="wind">
                <p className="bold">city3</p>
                <p>Wind Speed</p>
-            </div>
+            </div> */}
 
           </div>
        
@@ -80,7 +107,7 @@ const Home = () => {
       <div className="container">
         <div className="top">
           <div className="location">
-            <h1>{data.name}</h1>
+          {data.main &&<h2>{data.name} <span><BsFillBookmarkCheckFill onClick={()=>addtoFav()} className="add-to-fav"/></span></h2>}
           </div>
           <div className="temp" onClick={()=>handleDetails()}>
             {data.main ? <h1>{data.main.temp.toFixed()}°c</h1> : null}
@@ -127,7 +154,6 @@ const Home = () => {
         {data.name !== undefined &&
     <div className="details">
     {showDetails&&<div className="close-details" onClick={()=>handleDetails()}><AiOutlineArrowLeft className="close-details"/></div>}
-        <h2>details</h2>
         <div className="detail">
             <BsThermometerSun className="icon"/>
             <p>Min Temperature : {data.main.temp_min}</p>
