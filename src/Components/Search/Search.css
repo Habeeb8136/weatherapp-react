@@ -1,0 +1,18 @@
+/* .search-container{
+    width: 30vw;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 80%;
+    background-color: green;
+    transition: 0.5s;
+    z-index: 1;
+}
+.search-container:active{
+    right: 70%;
+}
+.search-icon{
+    position: fixed;
+    top:0
+    
+} */

@@ -1,0 +1,37 @@
+/* .details-container{
+    width: 30%;
+    height: 100%;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 5;
+    transition: 0.5s;
+}
+.details-container:active{
+    left: 70%;
+} */
+
+.details{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.489);
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    box-shadow: 2px 3px 8px black;
+    padding-top: 50px;
+}
+.details-toggle{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    height: 40px;
+    width: 40px; 
+    text-align: center; 
+}
+.icon{
+    height: 80px;
+    width: 80px;
+}
