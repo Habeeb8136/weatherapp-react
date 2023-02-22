@@ -22,7 +22,8 @@
     align-items: center;
     box-shadow: 2px 3px 8px black;
     padding-top: 50px;
-    font-size: 10px;
+    
+    font-size: 23px;
 }
 .details-toggle{
     position: absolute;

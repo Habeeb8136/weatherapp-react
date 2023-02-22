@@ -180,7 +180,7 @@
     .details-container.active{
         left: 0%;
     }
-    .feels,.humidity,.wind{
+    .feels,.humidity,.wind,.details p{
         font-size: 18px;
     }
     
