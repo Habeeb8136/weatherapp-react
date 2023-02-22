@@ -171,7 +171,7 @@ const Home = ({initialData}) => {
             {data.main ? <h1>{data.main.temp.toFixed()}°c</h1> : null}
           </div>
           <div className="description">
-            {data.weather ? <p>{data.weather[0].main}</p> : null}
+            {data.weather ? <p className="main-weather">{data.weather[0].main}</p> : null}
           </div>
         </div>
 

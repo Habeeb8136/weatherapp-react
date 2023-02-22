@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 .home-container{
-    
     background: url('../../Assets/35622495492_9767fa4ae1_c.jpg');
     background-size: cover;
     height: 100%;
@@ -13,7 +12,6 @@
     overflow: hidden;
 }
 
-
 .home-container:before {
   content: '';
   position: absolute;
@@ -23,8 +21,6 @@
   left: 0;
   z-index: -1;
 }
-
-
 
 .home-container input {
     width: 60%;
@@ -54,6 +50,9 @@
 
 ::placeholder {
   color: #f8f8f8;
+}
+.main-weather{
+    font-size: 40px;
 }
 
 .bottom{
@@ -92,6 +91,8 @@
     border-radius: 0.8rem;
     cursor: pointer;
     font-size: 30px;
+    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.136);
 }
 .container{
     height: 90%;
@@ -162,7 +163,6 @@
     gap:0;
     display: flex;
     flex-direction: row;
-    
 }
 .details-container.active{
     left: 70%;
@@ -172,7 +172,6 @@
 @media screen and (max-width:500px) {
     .search-container,.details-container{
         width: 100%;
-        
     }
     .search-container.active{
         right: 0%;
@@ -180,8 +179,11 @@
     .details-container.active{
         left: 0%;
     }
-    .feels,.humidity,.wind,.details p{
+    .feels,.humidity,.wind{
         font-size: 18px;
+    }
+    .details p{
+        font-size: 20px;
     }
     
 }
