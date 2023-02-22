@@ -16,9 +16,9 @@ function App() {
 
   return (
     <div className="App">
-        <Search />
+        {/* <Search /> */}
         <Home initialData={initialData}/>
-        <Details />
+        {/* <Details /> */}
     </div>
   );
 }
