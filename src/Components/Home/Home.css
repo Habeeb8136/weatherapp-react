@@ -35,6 +35,22 @@
   background: rgba(255,255,255, 0.1);
   color: #f8f8f8;
 }
+.location-button{
+    border: 1px solid white;
+    border-radius: 0.8rem;
+    padding: 15px;
+    width: fit-content;
+    margin:  10px auto;
+    display: flex;
+    transition: 0.2s;
+}
+.location-button:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.267);
+    backdrop-filter: blur(3px);
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.356);
+}
 
 ::placeholder {
   color: #f8f8f8;
