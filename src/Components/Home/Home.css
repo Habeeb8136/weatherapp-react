@@ -27,6 +27,7 @@
 
 
 .home-container input {
+    width: 60%;
   padding: .7rem 1.5rem;
   font-size: 1.2rem;
   border-radius: 25px;
@@ -45,12 +46,28 @@
     gap: 10px;
     margin: auto;
 }
+.add-to-fav{
+    height: 30px;
+    width: 30px;
+}
+.add-to-fav.active{
+    fill: rgb(218, 215, 0);
+}
 .favorite{
     display: flex;
     flex-direction: column;
     width: 80%;
     padding: 20px;
     gap: 5px;
+}
+.fav{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    align-items: center;
+    font-size: 25px;
+    padding: 5px;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.438);
 }
 .feels,.humidity,.wind, .cities{
     border: 1px solid white;
