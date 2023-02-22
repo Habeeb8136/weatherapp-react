@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import axios from "axios";
 import {
@@ -12,6 +12,7 @@ import {
   AiOutlineArrowLeft,
   AiOutlineSearch,
 } from "react-icons/ai";
+import {ImLocation} from 'react-icons/im'
 import { TiWeatherCloudy, TiWeatherPartlySunny } from "react-icons/ti";
 import { GiWindpump } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +24,8 @@ const Home = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [fav, setFav] = useState(false);
   const [data, setData] = useState({});
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
 
   const favorites = useSelector((state) => state.favorite);
   const dispatch = useDispatch();
@@ -62,13 +65,34 @@ const Home = () => {
     dispatch(removeFromFav(data));
   };
 
+  useEffect(() => {
+    
+    navigator.geolocation.getCurrentPosition((position)=>{
+      setLatitude(position.coords.latitude);
+      setLongitude(position.coords.longitude)
+      
+    })
+
+  }, []);
+
+  const searchGeoLocation=()=>{
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=9a6b6507417354e5510db073f216c845`).then((response) => {
+      setData(response.data);
+      console.log(response.data);
+    });
+  }
+
+  
+
   return (
     <div className="home-container">
       {!showSearch && (
         <BiSearch className="searchButton" onClick={() => handlePage()} />
       )}
       <h3>Weather App</h3>
-
+        <div className="location-button">
+          <h5 onClick={()=>searchGeoLocation()}>search by currect location</h5><span><ImLocation /></span>
+        </div>
       <div
         className={showSearch ? "search-container active" : "search-container"}
       >
