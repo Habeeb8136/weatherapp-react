@@ -18,9 +18,9 @@ import { GiWindpump } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFav, removeFromFav } from "../../redux/favorite";
 
-const Home = () => {
+const Home = ({initialData}) => {
   const [location, setLocation] = useState("delhi");
-  const [showSearch, setshowSearch] = useState(true);
+  const [showSearch, setshowSearch] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [fav, setFav] = useState(false);
   const [data, setData] = useState({});
@@ -29,6 +29,12 @@ const Home = () => {
 
   const favorites = useSelector((state) => state.favorite);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(initialData!==undefined){
+      setData(initialData)
+    }
+  }, [initialData]);
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=9a6b6507417354e5510db073f216c845`;
   const searchLocation = (event) => {
@@ -117,8 +123,9 @@ const Home = () => {
             </span>
           </h3>
 
-          {favorites.fav?.map((item) => (
+          {favorites.fav?.map((item,index) => (
             <div
+              key={index}
               className="fav"
               onClick={() => {
                 setData(item);
