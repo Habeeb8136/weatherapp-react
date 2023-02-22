@@ -91,6 +91,7 @@
     padding: 5px;
     border-radius: 0.8rem;
     cursor: pointer;
+    font-size: 30px;
 }
 .container{
     height: 90%;
@@ -178,6 +179,9 @@
     }
     .details-container.active{
         left: 0%;
+    }
+    .feels,.humidity,.wind{
+        font-size: 18px;
     }
     
 }
