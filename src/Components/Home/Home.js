@@ -76,7 +76,7 @@ const Home = () => {
   }, []);
 
   const searchGeoLocation=()=>{
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=9a6b6507417354e5510db073f216c845`).then((response) => {
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=9a6b6507417354e5510db073f216c845`).then((response) => {
       setData(response.data);
       console.log(response.data);
     });
